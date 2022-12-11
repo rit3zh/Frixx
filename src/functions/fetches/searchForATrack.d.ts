@@ -39,4 +39,4 @@ interface Data {
   duration_ms?: number;
 }
 
-export default async function searchForATrack(name?: string): Promise<Data>;
+export default function searchForATrack(name?: string): Promise<Data>;
