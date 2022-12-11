@@ -28,7 +28,7 @@
 
 #### Frix, A simple but a beginner friendly discord module to play music on discord. Using Spotify and YouTube.
 
-# Requirements
+# Prerequisites
 
 - discord.js - (latest)
 - @discordjs/opus
