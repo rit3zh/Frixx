@@ -93,7 +93,7 @@ async function getPlaylist(uri: string, member: GuildMember | User) {
     uri.match("open.spotify.com/playlist")
   ) {
     let arr: PlaylistBaseInformation;
-    const response = await spotifyPlaylist(uri || `${uri}`);
+    const response = await spotifyPlaylist(`${uri}`);
     const _definedArray: MusicTypes[] = [];
     for (const tracks of response.tracks?.items!) {
       const youtubeVideo = await ytsr.search(

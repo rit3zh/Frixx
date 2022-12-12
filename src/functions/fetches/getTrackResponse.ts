@@ -15,4 +15,4 @@ async function getSpotifyURI_Response(spotifyURI?: string) {
   return response;
 }
 
-module.exports = getSpotifyURI_Response;
+export default getSpotifyURI_Response;

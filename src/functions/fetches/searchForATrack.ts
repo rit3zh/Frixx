@@ -22,8 +22,7 @@ async function searchForATrack(name?: string) {
   }
 }
 
-module.exports = searchForATrack;
-
+export default searchForATrack;
 // spotTrack
 
 // const { Spotify } = require("spotify-info.js");

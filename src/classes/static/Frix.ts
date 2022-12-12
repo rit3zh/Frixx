@@ -769,6 +769,11 @@ export class Player extends TypedEmitter<TinyEvents> {
     if (!guild) throw EvalError(`Specify a guild property first.`);
     if (typeof guild !== "object")
       throw EvalError(`Specify a guild property first.`);
+    const _q: AoP = queue?.get(guild?.id) as AoP;
+
+    if (!_q || _q === undefined || _q === null)
+      throw Error("The queue is empty.");
+
     return (this.loopEnabled = true
       ? (this.loopEnabled = false)
       : (this.loopEnabled = true));
@@ -783,6 +788,11 @@ export class Player extends TypedEmitter<TinyEvents> {
     if (!guild) throw EvalError(`Specify a guild property first.`);
     if (typeof guild !== "object")
       throw EvalError(`Specify a guild property first.`);
+    const _q: AoP = queue?.get(guild?.id) as AoP;
+
+    if (!_q || _q === undefined || _q === null)
+      throw Error("The queue is empty.");
+
     return (this.loopEnabled = true);
   };
 
@@ -796,6 +806,11 @@ export class Player extends TypedEmitter<TinyEvents> {
     if (!guild) throw EvalError(`Specify a guild property first.`);
     if (typeof guild !== "object")
       throw EvalError(`Specify a guild property first.`);
+    const _q: AoP = queue?.get(guild?.id) as AoP;
+
+    if (!_q || _q === undefined || _q === null)
+      throw Error("The queue is empty.");
+
     return (this.loopEnabled = false);
   };
   /**
@@ -808,6 +823,11 @@ export class Player extends TypedEmitter<TinyEvents> {
     if (!guild) throw EvalError(`Specify a guild property first.`);
     if (typeof guild !== "object")
       throw EvalError(`Specify a guild property first.`);
+    const _q: AoP = queue?.get(guild?.id) as AoP;
+
+    if (!_q || _q === undefined || _q === null)
+      throw Error("The queue is empty.");
+
     this.isPaused = true;
     this.isPlaying = false;
     return this.player?.pause() === true
@@ -831,6 +851,10 @@ export class Player extends TypedEmitter<TinyEvents> {
     if (typeof secondsToSeek !== "number")
       throw EvalError(`The duration needs to be a number.`);
     const _q: AoP = (await queue?.get(guild?.id)) as AoP;
+
+    if (!_q || _q === undefined || _q === null)
+      throw Error("The queue is empty.");
+
     const seconds = _q.tracks?.[0].durationSeconds;
     if (secondsToSeek > seconds!)
       throw EvalError(
@@ -860,10 +884,13 @@ export class Player extends TypedEmitter<TinyEvents> {
    * @throws *{EvalError}*
    * @param guild The guild property - (Mandatory)
    */
-  resume? = (guild: Guild) => {
+  resume? = async (guild: Guild) => {
     if (!guild) throw EvalError(`Specify a guild property first.`);
     if (typeof guild !== "object")
       throw EvalError(`Specify a guild property first.`);
+    const _getQueue: AoP = (await queue.get(guild.id)) as AoP;
+    if (!_getQueue || _getQueue === undefined || _getQueue === null)
+      throw Error("The queue is empty.");
     this.isPaused = false;
     this.isPlaying = true;
     return this.player?.unpause();
@@ -880,6 +907,9 @@ export class Player extends TypedEmitter<TinyEvents> {
       throw EvalError(`Specify a guild property first.`);
     if (typeof volumePercentage !== "number")
       throw Error(`The volume needs to be a number`);
+    const _getQueue: AoP = (await queue.get(guild.id)) as AoP;
+    if (!_getQueue || _getQueue === undefined || _getQueue === null)
+      throw Error("The queue is empty.");
     if (volumePercentage! > 100 || volumePercentage! < 10)
       throw EvalError(
         `The volume cannot be lower than 10% and also cannot be higher than 100%`
@@ -901,7 +931,8 @@ export class Player extends TypedEmitter<TinyEvents> {
     if (typeof guild !== "object")
       throw EvalError(`Specify a guild property first.`);
     const _getQueue: AoP = (await queue.get(guild.id)) as AoP;
-
+    if (!_getQueue || _getQueue === undefined || _getQueue === null)
+      throw Error("The queue is empty.");
     if (_getQueue?.tracks?.length! < 0)
       return Error(`There is no tracks in the queue`);
     else return _getQueue.tracks?.splice(0, _getQueue?.tracks.length);
@@ -958,6 +989,8 @@ export class Player extends TypedEmitter<TinyEvents> {
     if (typeof guild !== "object")
       throw EvalError(`Specify a guild property first.`);
     const getQueue: AoP = (await queue.get(guild.id)) as AoP;
+    if (!getQueue || getQueue === undefined || getQueue === null)
+      throw Error("The queue is empty.");
     const currentTrack = await getQueue.tracks?.[0];
     const relatedTrack = await findRelatedTrack(
       currentTrack?.youtubeURL,
@@ -979,6 +1012,8 @@ export class Player extends TypedEmitter<TinyEvents> {
       throw EvalError(`Specify a guild property first.`);
 
     const _getQueue: AoP = (await queue.get(guild?.id)) as AoP;
+    if (!_getQueue || _getQueue === undefined || _getQueue === null)
+      throw Error("The queue is empty.");
     return _getQueue;
   };
 
@@ -992,6 +1027,8 @@ export class Player extends TypedEmitter<TinyEvents> {
    */
   skip? = async (guild: Guild, type?: ChatInputCommandInteraction) => {
     const _getQueue: AoP = (await queue.get(guild?.id)) as AoP;
+    if (!_getQueue || _getQueue === undefined || _getQueue === null)
+      throw Error("The queue is empty.");
     if (!guild) throw EvalError(`Specify a guild property first.`);
     if (typeof guild !== "object")
       throw EvalError(`Specify a guild property first.`);
@@ -1030,6 +1067,9 @@ export class Player extends TypedEmitter<TinyEvents> {
       throw EvalError(`Specify a guild property first.`);
 
     const _getQueue: AoP = queue?.get(guild?.id) as AoP;
+
+    if (!_getQueue || _getQueue === undefined || _getQueue === null)
+      throw Error("The queue is empty.");
     const previousTrack = _getQueue.previousSongs![0];
     _getQueue.tracks?.push(previousTrack);
     const songs = _getQueue.tracks;
@@ -1063,6 +1103,10 @@ export class Player extends TypedEmitter<TinyEvents> {
       throw EvalError(`Specify a guild property first.`);
     if (typeof leave !== "boolean")
       throw Error("The leave property needs to be a boolean.");
+    const _q: AoP = queue.get(guild.id) as AoP;
+
+    if (!_q || _q === undefined || _q === null)
+      throw Error("The queue is empty.");
     queue?.delete(guild.id);
     this.player?.stop(true);
 
@@ -1083,6 +1127,8 @@ export class Player extends TypedEmitter<TinyEvents> {
       throw EvalError(`Specify a guild property first.`);
 
     const _q: AoP = queue.get(guild.id) as AoP;
+    if (!_q || _q === undefined || _q === null)
+      throw Error("The queue is empty.");
     if (_q.tracks?.length! < 1)
       throw Error(`Queue doesn't have enough songs to be shuffled`);
     const shuffledQueue = shuffleQueue(_q?.tracks!);
@@ -1106,6 +1152,8 @@ export class Player extends TypedEmitter<TinyEvents> {
     if (typeof guild !== "object")
       throw EvalError(`Specify a guild property first.`);
     const _queue: AoP = queue.get(guild?.id) as AoP;
+    if (!_queue || _queue === undefined || _queue === null)
+      throw Error("The queue is empty.");
     const currentTrack = _queue.tracks?.[0];
     const relatedTrack = await await relatedTrackFinder(
       currentTrack?.youtubeURL!
@@ -1244,6 +1292,8 @@ export class Player extends TypedEmitter<TinyEvents> {
     if (typeof skipTo !== "number")
       throw EvalError("The track to skip to needs to be a number");
     const _q: AoP = queue.get(guild.id) as AoP;
+    if (!_q || _q === undefined || _q === null)
+      throw Error("The queue is empty.");
     if (skipTo > _q.tracks?.length!)
       throw Error(`You only have ${_q?.tracks?.length} tracks in the queue. `);
     const _previousSongs = _q.tracks?.splice(0, skipTo);
@@ -1274,10 +1324,11 @@ export class Player extends TypedEmitter<TinyEvents> {
     if (!guild) throw EvalError(`Specify a guild property first.`);
     if (typeof guild !== "object")
       throw EvalError(`Specify a guild property first.`);
-
-    return this.isAutoPlayEnabled === true
-      ? (this.isAutoPlayEnabled = false)
-      : (this.isAutoPlayEnabled = true);
+    const _queue: AoP = queue?.get(guild.id) as AoP;
+    if (!_queue || _queue === undefined || _queue === null)
+      return this.isAutoPlayEnabled === true
+        ? (this.isAutoPlayEnabled = false)
+        : (this.isAutoPlayEnabled = true);
   };
   /**
    *@default
@@ -1291,6 +1342,8 @@ export class Player extends TypedEmitter<TinyEvents> {
       throw EvalError(`Specify a guild property first.`);
 
     const _queue: AoP = queue?.get(guild.id) as AoP;
+    if (!_queue || _queue === undefined || _queue === null)
+      throw Error("The queue is empty.");
     if (!_queue) throw Error("No queue found.");
     else queue?.delete(guild.id);
   };

@@ -9,7 +9,7 @@ const client = new Spotify({
 /**
  * @param {String} uri
  */
-async function getSpotifyPlaylists(uri = String) {
+async function getSpotifyPlaylists(uri: string) {
   const response = await client?.getPlaylistByURL!(`${uri}`);
   return response;
 }
