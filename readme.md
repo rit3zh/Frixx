@@ -13,20 +13,26 @@
 </p>
 
 <p align="center">
-  <a href="https://travis-ci.org/Kylart/MalScraper" target="_blank">
-    <img src="https://img.shields.io/npm/v/frix.svg" alt="Build Status">
+  <a href="https://github.com/TrishCX/Frix" target="_blank">
+    <img src="https://img.shields.io/npm/v/frixx.svg" alt="Build Status">
   </a>
-  <a href="https://codecov.io/gh/Kylart/MalScraper" target="_blank">
-    <img src="https://badgen.net/npm/v/express" alt="Codecov" />
+  <a href="https://github.com/TrishCX/Frix" target="_blank">
+    <img src="https://img.shields.io/badge/License-Boost_1.0-lightblue.svg" alt="Codecov" />
   </a>
-  <a href="https://opensource.org/licenses/MIT" target="_blank">
+  <a href="https://github.com/TrishCX/Frix" target="_blank">
     <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License">
   </a>
 </p>
 
-# Frix
+<p align="center">
+  <a href="https://www.npmjs.com/package/frixx" target="_blank">
+    <img src="https://img.shields.io/npm/dt/@myno_21/time.svg" />
+  </a>
+</p>
 
-#### Frix, A simple but a beginner friendly discord module to play music on discord. Using Spotify and YouTube.
+# Frixx
+
+#### Frixx, A simple but a beginner friendly module to play music on discord. Using Spotify and YouTube.
 
 # Prerequisites
 
@@ -38,7 +44,7 @@
 ## Installation
 
 ```bash
-$ npm install frix
+$ npm install frixx
 ```
 
 ## Import
@@ -46,13 +52,13 @@ $ npm install frix
 - ### The import is for the latest EcmaScript/ES.
 
 ```ts
-import { Player } from "frix";
+import { Player } from "frixx";
 ```
 
 - ### This is the default CommonJS import.
 
 ```js
-const { Player } = require("frix");
+const { Player } = require("frixx");
 ```
 
 ## Initialize
@@ -67,7 +73,7 @@ import {
   GatewayIntentBits,
   Partials,
 } from "discord.js";
-import { Player } from "frix";
+import { Player } from "frixx";
 const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
@@ -438,7 +444,7 @@ In order to add tracks to the queue, you have to specify a proper tracks array.
 
 ```ts
         import { Client, ApplicationCommandOptionType } from "discord.js";
-        import { Player } from "frix";
+        import { Player } from "frixx";
 
         //Initializing the player.
         const player = new Player(client)
@@ -540,5 +546,5 @@ await player?.play(
 );
 ```
 
-- [Examples](a) (_A complete example bot)_
-- [Github](s)
+- [Examples](https://github.com/TrishCX/Frix/tree/main/Examples)
+- [Github](https://github.com/TrishCX/Frix/tree/main/Examples)
