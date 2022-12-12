@@ -26,7 +26,7 @@
 
 <p align="center">
   <a href="https://www.npmjs.com/package/frixx" target="_blank">
-    <img src="https://img.shields.io/npm/dt/@myno_21/time.svg" />
+    <img src="https://img.shields.io/npm/dt/frixx.svg" />
   </a>
 </p>
 
