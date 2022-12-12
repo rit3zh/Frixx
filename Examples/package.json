@@ -1,0 +1,27 @@
+{
+  "dependencies": {
+    "@discordjs/opus": "^0.9.0",
+    "@discordjs/voice": "^0.14.0",
+    "@types/fluent-ffmpeg": "^2.1.20",
+    "discord-ytdl-core": "^5.0.4",
+    "discord.js": "^14.7.1",
+    "fluent-ffmpeg": "^2.1.2",
+    "frixx": "^1.0.4",
+    "libsodium-wrappers": "^0.7.10",
+    "nodemon": "^2.0.20",
+    "play-dl": "^1.9.6",
+    "ytdl-core": "^4.11.2"
+  },
+  "name": "frix",
+  "version": "1.0.0",
+  "main": "src/public/index.js",
+  "scripts": {
+    "dev": "nodemon src/publlic/index.js",
+    "serverWatch": "tsc --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
